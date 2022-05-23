@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LU_Report" pageWidth="828" pageHeight="600" orientation="Landscape" columnWidth="756" leftMargin="36" rightMargin="36" topMargin="29" bottomMargin="21" uuid="cdb4307d-f23f-49e0-9a44-99b10eb8fa87">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="111"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     trainees.`REGNO`,
+     trainees.FIRST_NAME,
+     trainees.SURNAME,
+     sectors.SECNAME,
+     trade.TRADENAME,
+     levels.LEVEL,
+     modules.MCODE,
+     modules.ModuleName,
+     evidence.`Qualification`,
+     evidence.`EType`,
+     evidence.`OutOf`,
+     evidence.`obtainedMarks`,
+     evidence.`Percentage`,
+     evidence.`decision`,
+     evidence.`filledDate`,
+     learningunits.`Unit`,
+     learningunits.`LU_NAME`,
+     sysusers.`USERNAME`,
+     sysusers.`FIRSTNAME`,
+     sysusers.`LASTNAME`,
+     sysusers.`EMAIL`,
+     sysusers.`CONTACT`,
+     school_info.`SchoolName` AS school_info_SchoolName,
+     school_info.`PostCode` AS school_info_PostCode,
+     school_info.`Logo` AS school_info_Logo,
+     school_info.`Province` AS school_info_Province,
+     school_info.`District` AS school_info_District,
+     school_info.`Sector` AS school_info_Sector,(SELECT FIRSTNAME FROM sysusers WHERE DIVISION='DOS') AS DOSfirstName,(SELECT LASTNAME FROM sysusers WHERE DIVISION='DOS') AS DOSlastName
+FROM school_info,evidence
+JOIN sectors USING(SECID) JOIN TRADE USING(TRADEID) JOIN LEVELS USING(LEVELID) JOIN modules USING(MCODE) INNER JOIN learningunits ON evidence.LUID=learningunits.LUID INNER JOIN sysusers ON sysusers.USERID=evidence.USERID JOIN trainees USING(REGNO)
+WHERE
+     TRADENAME = 'Software Development'
+     and LEVEL = 'Level 5'
+     and ModuleName = 'BACKEND APPLICATION DEVELOPMENT'
+     and LU_Name = 'Introduce Python language'
+     and REGNO = 'REG-1[C@1d08d1f']]>
+	</queryString>
+	<field name="REGNO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRST_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SURNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SECNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TRADENAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LEVEL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MCODE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ModuleName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Qualification" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OutOf" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obtainedMarks" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Percentage" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="decision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="filledDate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Unit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LU_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="USERNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONTACT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="school_info_SchoolName" class="java.lang.String"/>
+	<field name="school_info_PostCode" class="java.lang.String"/>
+	<field name="school_info_Logo" class="java.lang.Object"/>
+	<field name="school_info_Province" class="java.lang.String"/>
+	<field name="school_info_District" class="java.lang.String"/>
+	<field name="school_info_Sector" class="java.lang.String"/>
+	<field name="DOSfirstName" class="java.lang.String"/>
+	<field name="DOSlastName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="216" splitType="Stretch">
+			<textField>
+				<reportElement x="110" y="1" width="539" height="29" uuid="78148f15-5eaa-48f8-b83b-9aacdea5b130"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_info_SchoolName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="70" width="252" height="20" uuid="7145e752-0ab5-4d05-995b-7adaa04fa0c7"/>
+				<textElement>
+					<font size="15" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_info_Province}+" Province/City"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="100" width="252" height="20" uuid="1a3c85c1-6f3e-41e9-881d-ecc8f1fb4f13"/>
+				<textElement>
+					<font size="15" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_info_District}+" District"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="130" width="276" height="20" uuid="5c47cffc-7d8f-4be9-ac41-6cf8b0ad0f26"/>
+				<textElement>
+					<font size="15" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_info_Sector}+" Sector"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="160" width="366" height="20" uuid="3f0b9b67-26de-4153-b200-a081fc473ded"/>
+				<textElement textAlignment="Left">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_info_PostCode}+" Postal/Zip Code"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="110" width="269" height="20" uuid="66ba18f9-d476-4217-8852-3961ccbdbbb3"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Edu-Sector :"+$F{SECNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="130" width="269" height="20" uuid="9c7ee32f-9d11-42b2-be65-f82a45e0c2b3"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sub-Sector : "+$F{TRADENAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="445" y="160" width="265" height="20" uuid="21e24979-d571-4ed6-b7fa-774f36a32814"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Today : "+new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="90" width="269" height="20" uuid="d10b69f1-81fa-4015-b50c-f92cf96138e6"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lastname : "+$F{SURNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="70" width="269" height="20" uuid="43bc279c-99ed-4707-a45e-d1730592b294"/>
+				<textElement>
+					<font size="13" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FirstName : "+$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="445" y="40" width="269" height="30" uuid="f8901245-de84-4f2a-b041-980ebd88f76d"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Academic Information]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="199" width="742" height="1" uuid="d2586dd1-e685-48c6-9a06-b5a878486dab"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="742" height="1" uuid="6dffc341-593c-45e3-a26f-49960ae1123c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="199" uuid="8c049658-ef63-4550-b660-1ff96d83f3a5"/>
+			</line>
+			<line>
+				<reportElement x="741" y="0" width="1" height="199" uuid="52e165ef-f261-453e-a299-6b41b527f4d2"/>
+			</line>
+			<staticText>
+				<reportElement x="15" y="40" width="269" height="30" uuid="e119380b-1c05-4583-b4cc-627155436841"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[School Information & Address]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50"/>
+	</columnHeader>
+	<detail>
+		<band height="106" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="98" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50"/>
+	</lastPageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
+	<noData>
+		<band height="50"/>
+	</noData>
+</jasperReport>
